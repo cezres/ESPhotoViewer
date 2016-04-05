@@ -11,9 +11,24 @@ import ESPhotoViewer
 
 
 
+//func |>>() {
+//    
+//}
 
 
-class ViewController: UIViewController, ESPhotoViewerDelegate {
+protocol ESLoadingProtocol {
+    func loadingNextPage()
+}
+
+extension ESLoadingProtocol where Self: UIViewController {
+    func loadingNextPage() {
+        self.title = "AZUSA"
+    }
+}
+
+
+
+class ViewController: UIViewController, ESPhotoViewerDelegate, ESLoadingProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +39,7 @@ class ViewController: UIViewController, ESPhotoViewerDelegate {
 //        _view.backgroundColor = UIColor.orangeColor()
 //        view.addSubview(_view)
 //        _view.es_centeringForSuperview()
+        
         
         
         
@@ -40,6 +56,24 @@ class ViewController: UIViewController, ESPhotoViewerDelegate {
         imageSource.append(NSURL(fileURLWithPath: "/Users/cezr/Documents/011329kw0rsk8b892r9098.jpg"))
         imageSource.append(NSURL(fileURLWithPath: "/Users/cezr/Documents/011345bngvzhnvnzohu4hx.jpg"))
         
+        
+        let ss = imageSource.map { (url) -> String in
+            return url.absoluteString
+        }
+        
+        let ss2 = imageSource.flatMap { (url) -> String? in
+            return url.absoluteString
+        }
+        
+//        imageSource.map(String.init)
+        
+        
+        print(ss)
+        print(ss2)
+        
+        
+        
+        
 //        imageSource.append(NSURL(fileURLWithPath: "/Users/cezr/Documents/48209762_p0.jpg"))
 //        imageSource.append(NSURL(fileURLWithPath: "/Users/cezr/Documents/48209762_p0.jpg"))
 //        imageSource.append(NSURL(fileURLWithPath: "/Users/cezr/Documents/48209762_p0.jpg"))
@@ -48,7 +82,6 @@ class ViewController: UIViewController, ESPhotoViewerDelegate {
         let photoViewer = ESPhotoViewer()
         photoViewer.frame = CGRectMake(0, 20, view.frame.width, view.frame.height-20)
         photoViewer.backgroundColor = UIColor.grayColor()
-        photoViewer.AZ()
         
         photoViewer.delegate = self
         

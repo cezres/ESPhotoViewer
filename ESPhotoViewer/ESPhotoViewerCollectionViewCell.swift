@@ -9,26 +9,7 @@
 import UIKit
 
 
-extension UIView {
-    
-    func es_centeringForSuperview() {
-        
-        guard superview != nil else {
-            return
-        }
-        
-        let height = superview!.frame.width * frame.height / frame.width
-        if height < superview!.frame.size.height {
-            self.frame = CGRectMake(0, (superview!.frame.height - height) / 2, superview!.frame.width, height)
-        }
-        else {
-            let widht = superview!.frame.height * frame.width / frame.height
-            self.frame = CGRectMake((superview!.frame.width - widht) / 2, 0, widht, superview!.frame.height)
-        }
-        
-    }
-    
-}
+
 
 
 
@@ -70,3 +51,5 @@ public class ESPhotoViewerCollectionViewCell: UICollectionViewCell {
         }
     }
 }
+
+

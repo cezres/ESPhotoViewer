@@ -40,10 +40,6 @@ public class ESPhotoViewer: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func AZ() {
-        print("AZUSA")
-    }
-    
     private func initializationSubViews() {
         
         flowLayout = UICollectionViewFlowLayout()
@@ -77,7 +73,6 @@ extension ESPhotoViewer: UICollectionViewDelegate {
     
     public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         currentIndex = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
-//        print(currentIndex)
     }
     
     public func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
