@@ -1,13 +1,12 @@
 //
 //  AppDelegate.swift
-//  Example
+//  ESPhotoViewer Demo
 //
-//  Created by cezr on 16/4/3.
-//  Copyright © 2016年 cezr. All rights reserved.
+//  Created by 翟泉 on 16/6/2.
+//  Copyright © 2016年 云之彼端. All rights reserved.
 //
 
 import UIKit
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

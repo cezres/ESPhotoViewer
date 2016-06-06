@@ -7,88 +7,146 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E531B1F1CB0C97300053A6F /* ESPhotoViewer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E531B1E1CB0C97300053A6F /* ESPhotoViewer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6E531B271CB0C98300053A6F /* ESPhotoViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E531B261CB0C98300053A6F /* ESPhotoViewer.swift */; };
-		6E531BAC1CB1173500053A6F /* ESPhotoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E531BAB1CB1173500053A6F /* ESPhotoItem.swift */; };
-		6E531BAE1CB117CA00053A6F /* ESPhotoViewerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E531BAD1CB117CA00053A6F /* ESPhotoViewerCollectionViewCell.swift */; };
-		6E8E0BD21CB3A1AE00CA1C1B /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8E0BD11CB3A1AE00CA1C1B /* Extension.swift */; };
-		6E8E0BD41CB3A1E400CA1C1B /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8E0BD31CB3A1E400CA1C1B /* Cache.swift */; };
+		6E69D95A1D0021A900D5D898 /* ESPhotoViewer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E69D9591D0021A900D5D898 /* ESPhotoViewer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6E69D9621D0021CA00D5D898 /* ESPhotoViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E69D9611D0021CA00D5D898 /* ESPhotoViewer.swift */; };
+		6E69D9641D0021E200D5D898 /* ESPhotoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E69D9631D0021E200D5D898 /* ESPhotoCache.swift */; };
+		6E69D9661D0021F800D5D898 /* ESPhotoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E69D9651D0021F800D5D898 /* ESPhotoItem.swift */; };
+		6E69D9681D00223300D5D898 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E69D9671D00223300D5D898 /* Extension.swift */; };
+		6E69D9701D00227300D5D898 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E69D96F1D00227300D5D898 /* AppDelegate.swift */; };
+		6E69D9721D00227300D5D898 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E69D9711D00227300D5D898 /* ViewController.swift */; };
+		6E69D9751D00227300D5D898 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E69D9731D00227300D5D898 /* Main.storyboard */; };
+		6E69D9771D00227300D5D898 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E69D9761D00227300D5D898 /* Assets.xcassets */; };
+		6E69D97A1D00227300D5D898 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E69D9781D00227300D5D898 /* LaunchScreen.storyboard */; };
+		6E69D97F1D00228B00D5D898 /* ESPhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E69D9561D0021A800D5D898 /* ESPhotoViewer.framework */; };
+		6E69D9801D00228B00D5D898 /* ESPhotoViewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E69D9561D0021A800D5D898 /* ESPhotoViewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6E69D9811D00228B00D5D898 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E69D94D1D0021A800D5D898 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E69D9551D0021A800D5D898;
+			remoteInfo = ESPhotoViewer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6E69D9831D00228B00D5D898 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6E69D9801D00228B00D5D898 /* ESPhotoViewer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		6E531B1B1CB0C97300053A6F /* ESPhotoViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ESPhotoViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E531B1E1CB0C97300053A6F /* ESPhotoViewer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESPhotoViewer.h; sourceTree = "<group>"; };
-		6E531B201CB0C97300053A6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E531B261CB0C98300053A6F /* ESPhotoViewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESPhotoViewer.swift; sourceTree = "<group>"; };
-		6E531BAB1CB1173500053A6F /* ESPhotoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESPhotoItem.swift; sourceTree = "<group>"; };
-		6E531BAD1CB117CA00053A6F /* ESPhotoViewerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESPhotoViewerCollectionViewCell.swift; sourceTree = "<group>"; };
-		6E8E0BD11CB3A1AE00CA1C1B /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		6E8E0BD31CB3A1E400CA1C1B /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		6E69D9561D0021A800D5D898 /* ESPhotoViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ESPhotoViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E69D9591D0021A900D5D898 /* ESPhotoViewer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESPhotoViewer.h; sourceTree = "<group>"; };
+		6E69D95B1D0021A900D5D898 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E69D9611D0021CA00D5D898 /* ESPhotoViewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESPhotoViewer.swift; sourceTree = "<group>"; };
+		6E69D9631D0021E200D5D898 /* ESPhotoCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESPhotoCache.swift; sourceTree = "<group>"; };
+		6E69D9651D0021F800D5D898 /* ESPhotoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESPhotoItem.swift; sourceTree = "<group>"; };
+		6E69D9671D00223300D5D898 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		6E69D96D1D00227300D5D898 /* ESPhotoViewer Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ESPhotoViewer Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E69D96F1D00227300D5D898 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6E69D9711D00227300D5D898 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6E69D9741D00227300D5D898 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6E69D9761D00227300D5D898 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6E69D9791D00227300D5D898 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6E69D97B1D00227300D5D898 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6E531B171CB0C97300053A6F /* Frameworks */ = {
+		6E69D9521D0021A800D5D898 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6E69D96A1D00227300D5D898 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E69D97F1D00228B00D5D898 /* ESPhotoViewer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6E531B111CB0C97300053A6F = {
+		6E69D94C1D0021A800D5D898 = {
 			isa = PBXGroup;
 			children = (
-				6E531B1D1CB0C97300053A6F /* ESPhotoViewer */,
-				6E531B1C1CB0C97300053A6F /* Products */,
+				6E69D9581D0021A900D5D898 /* ESPhotoViewer */,
+				6E69D96E1D00227300D5D898 /* ESPhotoViewer Demo */,
+				6E69D9571D0021A800D5D898 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		6E531B1C1CB0C97300053A6F /* Products */ = {
+		6E69D9571D0021A800D5D898 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6E531B1B1CB0C97300053A6F /* ESPhotoViewer.framework */,
+				6E69D9561D0021A800D5D898 /* ESPhotoViewer.framework */,
+				6E69D96D1D00227300D5D898 /* ESPhotoViewer Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6E531B1D1CB0C97300053A6F /* ESPhotoViewer */ = {
+		6E69D9581D0021A900D5D898 /* ESPhotoViewer */ = {
 			isa = PBXGroup;
 			children = (
-				6E531B1E1CB0C97300053A6F /* ESPhotoViewer.h */,
-				6E531B201CB0C97300053A6F /* Info.plist */,
-				6E531B261CB0C98300053A6F /* ESPhotoViewer.swift */,
-				6E531BAD1CB117CA00053A6F /* ESPhotoViewerCollectionViewCell.swift */,
-				6E531BAB1CB1173500053A6F /* ESPhotoItem.swift */,
-				6E8E0BD11CB3A1AE00CA1C1B /* Extension.swift */,
-				6E8E0BD31CB3A1E400CA1C1B /* Cache.swift */,
+				6E69D9591D0021A900D5D898 /* ESPhotoViewer.h */,
+				6E69D95B1D0021A900D5D898 /* Info.plist */,
+				6E69D9611D0021CA00D5D898 /* ESPhotoViewer.swift */,
+				6E69D9651D0021F800D5D898 /* ESPhotoItem.swift */,
+				6E69D9631D0021E200D5D898 /* ESPhotoCache.swift */,
+				6E69D9671D00223300D5D898 /* Extension.swift */,
 			);
 			path = ESPhotoViewer;
+			sourceTree = "<group>";
+		};
+		6E69D96E1D00227300D5D898 /* ESPhotoViewer Demo */ = {
+			isa = PBXGroup;
+			children = (
+				6E69D96F1D00227300D5D898 /* AppDelegate.swift */,
+				6E69D9711D00227300D5D898 /* ViewController.swift */,
+				6E69D9731D00227300D5D898 /* Main.storyboard */,
+				6E69D9761D00227300D5D898 /* Assets.xcassets */,
+				6E69D9781D00227300D5D898 /* LaunchScreen.storyboard */,
+				6E69D97B1D00227300D5D898 /* Info.plist */,
+			);
+			path = "ESPhotoViewer Demo";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		6E531B181CB0C97300053A6F /* Headers */ = {
+		6E69D9531D0021A800D5D898 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E531B1F1CB0C97300053A6F /* ESPhotoViewer.h in Headers */,
+				6E69D95A1D0021A900D5D898 /* ESPhotoViewer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6E531B1A1CB0C97300053A6F /* ESPhotoViewer */ = {
+		6E69D9551D0021A800D5D898 /* ESPhotoViewer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6E531B231CB0C97300053A6F /* Build configuration list for PBXNativeTarget "ESPhotoViewer" */;
+			buildConfigurationList = 6E69D95E1D0021A900D5D898 /* Build configuration list for PBXNativeTarget "ESPhotoViewer" */;
 			buildPhases = (
-				6E531B161CB0C97300053A6F /* Sources */,
-				6E531B171CB0C97300053A6F /* Frameworks */,
-				6E531B181CB0C97300053A6F /* Headers */,
-				6E531B191CB0C97300053A6F /* Resources */,
+				6E69D9511D0021A800D5D898 /* Sources */,
+				6E69D9521D0021A800D5D898 /* Frameworks */,
+				6E69D9531D0021A800D5D898 /* Headers */,
+				6E69D9541D0021A800D5D898 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -96,67 +154,137 @@
 			);
 			name = ESPhotoViewer;
 			productName = ESPhotoViewer;
-			productReference = 6E531B1B1CB0C97300053A6F /* ESPhotoViewer.framework */;
+			productReference = 6E69D9561D0021A800D5D898 /* ESPhotoViewer.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		6E69D96C1D00227300D5D898 /* ESPhotoViewer Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E69D97C1D00227300D5D898 /* Build configuration list for PBXNativeTarget "ESPhotoViewer Demo" */;
+			buildPhases = (
+				6E69D9691D00227300D5D898 /* Sources */,
+				6E69D96A1D00227300D5D898 /* Frameworks */,
+				6E69D96B1D00227300D5D898 /* Resources */,
+				6E69D9831D00228B00D5D898 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E69D9821D00228B00D5D898 /* PBXTargetDependency */,
+			);
+			name = "ESPhotoViewer Demo";
+			productName = "ESPhotoViewer Demo";
+			productReference = 6E69D96D1D00227300D5D898 /* ESPhotoViewer Demo.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		6E531B121CB0C97300053A6F /* Project object */ = {
+		6E69D94D1D0021A800D5D898 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = cezr;
+				ORGANIZATIONNAME = "云之彼端";
 				TargetAttributes = {
-					6E531B1A1CB0C97300053A6F = {
-						CreatedOnToolsVersion = 7.3;
+					6E69D9551D0021A800D5D898 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					6E69D96C1D00227300D5D898 = {
+						CreatedOnToolsVersion = 7.3.1;
 					};
 				};
 			};
-			buildConfigurationList = 6E531B151CB0C97300053A6F /* Build configuration list for PBXProject "ESPhotoViewer" */;
+			buildConfigurationList = 6E69D9501D0021A800D5D898 /* Build configuration list for PBXProject "ESPhotoViewer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
-			mainGroup = 6E531B111CB0C97300053A6F;
-			productRefGroup = 6E531B1C1CB0C97300053A6F /* Products */;
+			mainGroup = 6E69D94C1D0021A800D5D898;
+			productRefGroup = 6E69D9571D0021A800D5D898 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6E531B1A1CB0C97300053A6F /* ESPhotoViewer */,
+				6E69D9551D0021A800D5D898 /* ESPhotoViewer */,
+				6E69D96C1D00227300D5D898 /* ESPhotoViewer Demo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6E531B191CB0C97300053A6F /* Resources */ = {
+		6E69D9541D0021A800D5D898 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6E69D96B1D00227300D5D898 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E69D97A1D00227300D5D898 /* LaunchScreen.storyboard in Resources */,
+				6E69D9771D00227300D5D898 /* Assets.xcassets in Resources */,
+				6E69D9751D00227300D5D898 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6E531B161CB0C97300053A6F /* Sources */ = {
+		6E69D9511D0021A800D5D898 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E531BAE1CB117CA00053A6F /* ESPhotoViewerCollectionViewCell.swift in Sources */,
-				6E8E0BD41CB3A1E400CA1C1B /* Cache.swift in Sources */,
-				6E531B271CB0C98300053A6F /* ESPhotoViewer.swift in Sources */,
-				6E531BAC1CB1173500053A6F /* ESPhotoItem.swift in Sources */,
-				6E8E0BD21CB3A1AE00CA1C1B /* Extension.swift in Sources */,
+				6E69D9621D0021CA00D5D898 /* ESPhotoViewer.swift in Sources */,
+				6E69D9641D0021E200D5D898 /* ESPhotoCache.swift in Sources */,
+				6E69D9661D0021F800D5D898 /* ESPhotoItem.swift in Sources */,
+				6E69D9681D00223300D5D898 /* Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E69D9691D00227300D5D898 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E69D9721D00227300D5D898 /* ViewController.swift in Sources */,
+				6E69D9701D00227300D5D898 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		6E69D9821D00228B00D5D898 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E69D9551D0021A800D5D898 /* ESPhotoViewer */;
+			targetProxy = 6E69D9811D00228B00D5D898 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6E69D9731D00227300D5D898 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E69D9741D00227300D5D898 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6E69D9781D00227300D5D898 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E69D9791D00227300D5D898 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		6E531B211CB0C97300053A6F /* Debug */ = {
+		6E69D95C1D0021A900D5D898 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -205,7 +333,7 @@
 			};
 			name = Debug;
 		};
-		6E531B221CB0C97300053A6F /* Release */ = {
+		6E69D95D1D0021A900D5D898 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -247,11 +375,10 @@
 			};
 			name = Release;
 		};
-		6E531B241CB0C97300053A6F /* Debug */ = {
+		6E69D95F1D0021A900D5D898 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -267,11 +394,10 @@
 			};
 			name = Debug;
 		};
-		6E531B251CB0C97300053A6F /* Release */ = {
+		6E69D9601D0021A900D5D898 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -286,28 +412,61 @@
 			};
 			name = Release;
 		};
+		6E69D97D1D00227300D5D898 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "ESPhotoViewer Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cezr.ESPhotoViewer-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6E69D97E1D00227300D5D898 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "ESPhotoViewer Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cezr.ESPhotoViewer-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6E531B151CB0C97300053A6F /* Build configuration list for PBXProject "ESPhotoViewer" */ = {
+		6E69D9501D0021A800D5D898 /* Build configuration list for PBXProject "ESPhotoViewer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6E531B211CB0C97300053A6F /* Debug */,
-				6E531B221CB0C97300053A6F /* Release */,
+				6E69D95C1D0021A900D5D898 /* Debug */,
+				6E69D95D1D0021A900D5D898 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6E531B231CB0C97300053A6F /* Build configuration list for PBXNativeTarget "ESPhotoViewer" */ = {
+		6E69D95E1D0021A900D5D898 /* Build configuration list for PBXNativeTarget "ESPhotoViewer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6E531B241CB0C97300053A6F /* Debug */,
-				6E531B251CB0C97300053A6F /* Release */,
+				6E69D95F1D0021A900D5D898 /* Debug */,
+				6E69D9601D0021A900D5D898 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E69D97C1D00227300D5D898 /* Build configuration list for PBXNativeTarget "ESPhotoViewer Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E69D97D1D00227300D5D898 /* Debug */,
+				6E69D97E1D00227300D5D898 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 6E531B121CB0C97300053A6F /* Project object */;
+	rootObject = 6E69D94D1D0021A800D5D898 /* Project object */;
 }

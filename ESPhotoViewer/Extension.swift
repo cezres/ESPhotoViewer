@@ -2,21 +2,28 @@
 //  Extension.swift
 //  ESPhotoViewer
 //
-//  Created by 翟泉 on 16/4/5.
-//  Copyright © 2016年 cezr. All rights reserved.
+//  Created by 翟泉 on 16/6/2.
+//  Copyright © 2016年 云之彼端. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension UIImage {
+    
+}
 
 
 extension UIView {
-    
-    func es_centeringForSuperview() {
-        
+    /**
+     相对于父视图居中
+     */
+    func photo_centeringForSuperview() {
         guard superview != nil else {
             return
         }
-        
+        guard frame.size != CGSizeZero else {
+            return
+        }
         let height = superview!.frame.width * frame.height / frame.width
         if height < superview!.frame.size.height {
             self.frame = CGRectMake(0, (superview!.frame.height - height) / 2, superview!.frame.width, height)
@@ -25,43 +32,27 @@ extension UIView {
             let widht = superview!.frame.height * frame.width / frame.height
             self.frame = CGRectMake((superview!.frame.width - widht) / 2, 0, widht, superview!.frame.height)
         }
-        
     }
-    
 }
 
-
-extension UIImage {
+extension UIImageView {
     
-    func es_scale(newWidth: CGFloat) -> UIImage {
-        
-        let newSize = CGSize(width: newWidth, height: newWidth / size.width * size.height)
-        UIGraphicsBeginImageContext(newSize)
-        drawInRect(CGRect(origin: CGPoint(x: 0,y: 0), size: newSize))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-    
-    func es_thumbnail() -> UIImage {
-        return es_scale(90)
-    }
-    
-    func es_square() -> UIImage {
-        
-        let rect: CGRect
-        if size.width > size.height {
-            rect = CGRect(x: (size.width-size.height)/2, y: 0, width: size.height, height: size.height)
+    override func photo_centeringForSuperview() {
+        guard let imageSize = image?.size else {
+            return
         }
-        else if size.width < size.height {
-            rect = CGRect(x: 0, y: (size.height-size.width)/2, width: size.width, height: size.width)
+        guard let superviewSize = superview?.frame.size else {
+            return
+        }
+        let height = superviewSize.width * imageSize.height / imageSize.width
+        if height < superviewSize.height {
+            frame = CGRectMake(0, (superviewSize.height-height) / 2, superviewSize.width, height)
         }
         else {
-            return self
+            let width = superviewSize.height * imageSize.width / imageSize.height
+            frame = CGRectMake((superviewSize.width - width) / 2, 0, width, superviewSize.height)
         }
-        if let imageRef = CGImageCreateWithImageInRect(self.CGImage, rect) {
-            return UIImage(CGImage: imageRef)
-        }
-        return self
     }
+    
 }
+
