@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  ESPhotoViewer Demo
 //
-//  Created by 翟泉 on 16/6/2.
+//  Created by 翟泉 on 16/6/17.
 //  Copyright © 2016年 云之彼端. All rights reserved.
 //
 
@@ -13,42 +13,47 @@ class ViewController: UIViewController {
     
     var imagePaths = [String]()
 
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory,NSSearchPathDomainMask.UserDomainMask, true)[0] + "/RNB33 图包"
+        guard let resourcePath = NSBundle.mainBundle().resourcePath else {
+            return
+        }
         
-        traverseDirectory(path/*"/Users/cezr/Documents/存档/下载/RNB33 图包"*/) { (filePath) in
+        traverseDirectory(resourcePath) { (filePath) in
             
             let pathExtension = filePath.pathExtension
             
-            
             if pathExtension == "png" {
-                print(filePath)
                 self.imagePaths.append(filePath as String)
             }
             else if pathExtension == "jpg" {
-                print(filePath)
                 self.imagePaths.append(filePath as String)
             }
             else if pathExtension == "jpeg" {
-                print(filePath)
                 self.imagePaths.append(filePath as String)
             }
             
-            
         }
+        
+        
+        imageView.image = UIImage(contentsOfFile: imagePaths[0])
+        imageView.photo_centeringForSuperview()
+        
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.handleTap(_:))))
         
     }
+
+    func handleTap(tapGestrue: UITapGestureRecognizer) {
+        navigationController?.pushViewController(ESPhotoViewer(imagePaths: imagePaths, index: 1), animated: true)
+    }
     
-    
-    @IBAction func clickButton(sender: AnyObject) {
-        
-        presentViewController(ESPhotoViewer(imagePaths: imagePaths, index: 3), animated: true) {
-            //
-        }
-        
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     
@@ -57,19 +62,13 @@ class ViewController: UIViewController {
             let filenames = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(directoryPath)
             for filename in filenames {
                 let path = directoryPath + "/" + filename
-                
-                
-                
-                
                 callback(filePath: path)
                 
                 var flag: ObjCBool = false
                 NSFileManager.defaultManager().fileExistsAtPath(path, isDirectory: &flag)
                 
                 if subDirectory && flag.boolValue {
-                    
                     traverseDirectory(path, subDirectory: subDirectory, callback: callback)
-                    
                 }
             }
         }
@@ -77,12 +76,6 @@ class ViewController: UIViewController {
             print(error)
         }
         
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 

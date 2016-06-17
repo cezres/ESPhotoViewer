@@ -2,70 +2,76 @@
 //  ESPhotoItem.swift
 //  ESPhotoViewer
 //
-//  Created by 翟泉 on 16/6/2.
+//  Created by 翟泉 on 16/6/17.
 //  Copyright © 2016年 云之彼端. All rights reserved.
 //
 
 import UIKit
 
 class ESPhotoItem: UIView {
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
     
     var imageView: UIImageView!
     
-    var imagePath: String = "" {
+    var imagePath: String! {
         didSet {
-            imageView.image = nil
-            ESPhotoCache.sharedInstance.imageForPath(imagePath) { [weak self](filePath, image) in
-                if self != nil && filePath == self!.imagePath {
-                    self!.imageView.image = image
-                    self?.imageView.photo_centeringForSuperview()
-                }
+//            imageView.image = nil
+            guard imagePath != nil else {
+                return
             }
-//            imageView.image = UIImage(contentsOfFile: imagePath)
-//            imageView.photo_centeringForSuperview()
+            
+            ESPhotoManager.manager.imageForPath(imagePath) { [weak self](path, image) in
+                guard self != nil else {
+                    return
+                }
+                guard path == self!.imagePath else {
+                    return
+                }
+                self!.imageView.image = image
+                self!.imageView.photo_centeringForSuperview()
+            }
+            
         }
     }
     
-    init() {
-        super.init(frame: CGRectZero)
-        
-        imageView = UIImageView()
-        addSubview(imageView)
-        
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         backgroundColor = UIColor.whiteColor()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ESPhotoItem.statusBarOrientationChange), name: UIDeviceOrientationDidChangeNotification, object: nil)
-        
+        imageView = UIImageView(frame: frame)
+        addSubview(imageView)
     }
-    
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
-    }
-    
-    func statusBarOrientationChange() {
-        imageView.photo_centeringForSuperview()
-    }
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {
-        if imageView.image == nil {
-            imageView.frame = CGRectMake(10, 10, frame.size.width-20, frame.size.height-20)
+        if imageView.frame == CGRectZero && imageView.image != nil {
+            imageView.photo_centeringForSuperview()
         }
         super.layoutSubviews()
     }
     
-    
-
 }
+
+
+public extension UIImageView {
+    
+    public func photo_centeringForSuperview() {
+        guard let imageSize = image?.size else {
+            return
+        }
+        guard let superviewSize = superview?.frame.size else {
+            return
+        }
+        let height = superviewSize.width * imageSize.height / imageSize.width
+        if height < superviewSize.height {
+            frame = CGRectMake(0, (superviewSize.height-height) / 2, superviewSize.width, height)
+        }
+        else {
+            let width = superviewSize.height * imageSize.width / imageSize.height
+            frame = CGRectMake((superviewSize.width - width) / 2, 0, width, superviewSize.height)
+        }
+    }
+    
+}
+
