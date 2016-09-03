@@ -2,151 +2,118 @@
 //  ESPhotoViewer.swift
 //  ESPhotoViewer
 //
-//  Created by 翟泉 on 16/6/17.
+//  Created by 翟泉 on 2016/9/3.
 //  Copyright © 2016年 云之彼端. All rights reserved.
 //
 
 import UIKit
 
-public class ESPhotoViewer: UIViewController, UIScrollViewDelegate {
+public class ESPhotoViewer: UIViewController {
     
-    var scrollView: UIScrollView!
-    
-    var photoItems = [ESPhotoItem]()
-    
-    var imagePaths: [String]!
-    
-    var currentIndex: Int = 0 {
+    var index: Int = 0 {
+        willSet {
+            
+        }
         didSet {
-            didSetCurrentIndex(oldValue)
+            guard index != oldValue else {
+                return
+            }
+            print(index)
         }
     }
     
-    public init(imagePaths: [String], index: Int = 0) {
+    public class func view(imageURLs: [URL], inController controller: UIViewController) {
+        controller.present(ESPhotoViewer(imageURLs: imageURLs), animated: true, completion: nil)
+    }
+    
+    
+    private var imageURLs: [URL]!
+    
+    private var collectionView: UICollectionView!
+    private var flowLayout: UICollectionViewFlowLayout!
+    
+    
+    init(imageURLs: [URL]) {
         super.init(nibName: nil, bundle: nil)
-        self.imagePaths = imagePaths
-        currentIndex = index
-        title = "\(currentIndex+1)/\(imagePaths.count)"
-        view.backgroundColor = UIColor.whiteColor()
+        self.imageURLs = imageURLs
     }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        ESPhotoCache.removeAllCache()
     }
 
     override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.addSubview(UIView())
+        view.backgroundColor = UIColor.white()
         
-        scrollView = UIScrollView()
-        scrollView.backgroundColor = view.backgroundColor
-        scrollView.pagingEnabled = true
-        scrollView.delegate = self
-        view.addSubview(scrollView)
+        flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = UICollectionViewScrollDirection.horizontal
+        flowLayout.itemSize = view.bounds.size
+        flowLayout.sectionInset = UIEdgeInsetsZero
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 0
         
-        for idx in 0..<5 {
-            let item = ESPhotoItem()
-            photoItems.append(item)
-            scrollView.addSubview(item)
-            
-            let offset: Int
-            if currentIndex > imagePaths.count-2 {
-                offset = imagePaths.count - 5
-            }
-            else if currentIndex < 2 {
-                offset = 0
-            }
-            else {
-                offset = currentIndex - 2
-            }
-            let index = offset + idx
-            item.imagePath = imagePaths[index]
-        }
-        layoutSubviews()
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.isPagingEnabled = true
+        collectionView.backgroundColor = view.backgroundColor
+        collectionView.register(ESPhotoCell.classForCoder(), forCellWithReuseIdentifier: "Photo")
+        view.addSubview(collectionView)
+    }
+
+    override public func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+        ESPhotoCache.removeAllCache()
     }
     
-    func layoutSubviews() {
-        let rect: CGRect
-        if view.frame.width < view.frame.height {
-            rect = CGRectMake(0, 20, view.bounds.width, view.bounds.height - 20)
-        }
-        else {
-            rect = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
-        }
-        
-        if rect != scrollView.frame {
-            scrollView.frame = rect
-            scrollView.contentSize = CGSizeMake(scrollView.bounds.width * CGFloat(imagePaths.count), scrollView.bounds.height)
-            scrollView.contentOffset = CGPointMake(scrollView.frame.width * CGFloat(currentIndex), 0)
-            
-            for (idx, item) in photoItems.enumerate() {
-                
-                
-                let offset: Int
-                if currentIndex > imagePaths.count-2 {
-                    offset = imagePaths.count - 5
-                }
-                else if currentIndex < 2 {
-                    offset = 0
-                }
-                else {
-                    offset = currentIndex - 2
-                }
-                
-                let index = CGFloat(offset + idx)
-                item.frame = CGRectMake(index * scrollView.frame.width, 0, scrollView.frame.width, scrollView.frame.height)
-            }
+    public override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if collectionView.frame != view.bounds {
+            flowLayout.itemSize = view.bounds.size
+            collectionView.frame = view.bounds
+            collectionView.contentOffset = CGPoint(x: CGFloat(index) * collectionView.bounds.size.width, y: 0)
+            collectionView.reloadData()
         }
         
     }
     
-    func didSetCurrentIndex(oldIndex: Int) {
-        title = "\(currentIndex+1)/\(imagePaths.count)"
-        
-        print(currentIndex)
-        
-        if currentIndex < 2 || currentIndex > imagePaths.count-3 {
+}
+
+
+
+extension ESPhotoViewer: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    // MARK: - Number
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageURLs.count
+    }
+    
+    // MARK: - Size
+    
+    // MARK: - Cell
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "Photo", for: indexPath)
+    }
+    
+    // MARK: - Data
+    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let photo = cell as? ESPhotoCell else {
             return
         }
-        
-        if currentIndex > oldIndex {
-            if currentIndex == 2 {
-                return
-            }
-            let item = photoItems.removeFirst()
-            photoItems.append(item)
-            let offset = CGFloat(currentIndex + 2) * scrollView.frame.width - item.frame.origin.x
-            item.transform = CGAffineTransformTranslate(item.transform, offset, 0)
-            item.imagePath = imagePaths[currentIndex + 2]
-        }
-        else if currentIndex < oldIndex {
-            if currentIndex == imagePaths.count-3 {
-                return
-            }
-            let item = photoItems.removeLast()
-            photoItems.insert(item, atIndex: 0)
-            
-            let offset = CGFloat(currentIndex - 2) * scrollView.frame.width - item.frame.origin.x
-            item.transform = CGAffineTransformTranslate(item.transform, offset, 0)
-            item.imagePath = imagePaths[currentIndex - 2]
-        }
+        photo.imageURL = imageURLs[indexPath.row]
+        ESPhotoCache.shared.loadImage(url: imageURLs[indexPath.row])
     }
     
-    
-    // MARK: - UIScrollViewDelegate
-    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        currentIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
-    }
-    
-    public func scrollViewDidScroll(scrollView: UIScrollView) {
-        if scrollView.contentOffset.x > CGFloat(currentIndex+1) * scrollView.frame.width {
-            currentIndex += 1
-        }
-        else if scrollView.contentOffset.x < CGFloat(currentIndex-1) * scrollView.frame.width {
-            currentIndex -= 1
-        }
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        index = Int(scrollView.contentOffset.x / scrollView.bounds.size.width)
     }
     
 }
